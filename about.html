@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gleaming Aura</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .about-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      padding: 5rem 5%;
+    }
+
+    .about-visual {
+      aspect-ratio: 4/5;
+      background: linear-gradient(135deg, #1e1a14, #2a2318);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      position: relative;
+    }
+
+    .about-visual::after {
+      content: '';
+      position: absolute;
+      inset: 14px;
+      border: 1px solid rgba(201,168,76,0.3);
+      pointer-events: none;
+    }
+
+    .about-text .section-title { margin-bottom: 0.5rem; }
+
+    .about-text p {
+      color: var(--muted);
+      line-height: 1.9;
+      margin-top: 1rem;
+    }
+
+    /* Values */
+    .values-section {
+      background: var(--black);
+      padding: 5rem 5%;
+    }
+
+    .values-section .section-title { color: var(--white); }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .value-card {
+      border: 1px solid rgba(201,168,76,0.15);
+      padding: 2.5rem 2rem;
+    }
+
+    .value-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .value-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--white);
+      font-weight: 300;
+      margin-bottom: 0.8rem;
+    }
+
+    .value-card p {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+      line-height: 1.8;
+    }
+
+    /* Process */
+    .process-section { padding: 5rem 5%; }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .step {
+      text-align: center;
+      position: relative;
+    }
+
+    .step::after {
+      content: '→';
+      position: absolute;
+      top: 1rem;
+      right: -1rem;
+      color: var(--gold);
+      font-size: 1.2rem;
+    }
+
+    .step:last-child::after { display: none; }
+
+    .step-num {
+      width: 56px;
+      height: 56px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--gold);
+      margin: 0 auto 1.2rem;
+    }
+
+    .step h4 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+
+    .step p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* Gem types */
+    .gems-section {
+      background: var(--deep);
+      padding: 5rem 5%;
+    }
+
+    .gems-section .section-title { color: var(--white); }
+
+    .gems-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .gem-card {
+      border: 1px solid rgba(201,168,76,0.2);
+      padding: 1.8rem 1rem;
+      text-align: center;
+      transition: border-color 0.3s;
+    }
+
+    .gem-card:hover { border-color: var(--gold); }
+
+    .gem-card .gem-emoji { font-size: 2rem; margin-bottom: 0.8rem; }
+
+    .gem-card h4 {
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+   .gem-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+    @media (max-width: 768px) {
+      .about-intro { grid-template-columns: 1fr; gap: 2.5rem; }
+      .values-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .step::after { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .process-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">Gleaming Aura Jewellery</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <header class="page-hero">
+  <div>
+    <div class="section-label">Jewelry/watches</div>
+
+    <h1>Luxury <em>Handcrafted Jewellery</em></h1>
+
+    <p>💎 Natural & Heated gems 🇱🇰</p>
+    <p>✨ Custom Handcrafted Jewelry</p>
+    <p>📦 Worldwide Delivery</p>
+
+  </div>
+</header>
+
+  <!-- INTRO -->
+  <section class="about-intro">
+    <div class="about-visual">
+  <video autoplay muted loop playsinline>
+    <source src="videos/GA Ring 01.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+    <div class="about-text">
+      <div class="section-label">Who We Are</div>
+      <h2 class="section-title">Gem Island <em>Artisans</em></h2>
+      <div class="divider"></div>
+      <p>LuxeGems was born from a love of Sri Lanka's centuries-old gem trade. Our island has gifted the world with some of its finest sapphires, rubies, and rare alexandrite — and we exist to bring that legacy to you, wherever you are.</p>
+      <p>We work with master craftsmen in Colombo and Ratnapura — Sri Lanka's gem capital — to handcraft jewelry that honours both the stone and its wearer. From design to delivery, every step is personal.</p>
+      <p>Whether you desire a ready-made piece from our vault or a fully custom creation, we pour the same level of care into every commission.</p>
+      <br>
+      <a href="contact.html" class="btn">Request Custom Piece</a>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="values-section">
+    <div class="section-label" style="color:var(--gold)">What We Stand For</div>
+    <h2 class="section-title">Our <em style="color:var(--gold)">Principles</em></h2>
+
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🌍</div>
+        <h3>Ethical Sourcing</h3>
+        <p>Every gem is traced to its origin. We work only with licensed Sri Lankan miners and dealers committed to fair trade and responsible extraction.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">✋</div>
+        <h3>True Handcraft</h3>
+        <p>No factory machines. Each piece is shaped, set, and polished by the hands of experienced artisans who have spent decades perfecting their craft.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">💯</div>
+        <h3>Transparent Quality</h3>
+        <p>We provide full disclosure on every gem — natural or heated, carat weight, colour grade, and origin. What you see is what you receive.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process-section">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">From <em>Idea to Your Door</em></h2>
+    <div class="divider"></div>
+
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>You Reach Out</h4>
+        <p>DM us or fill in our contact form with your idea — gem type, metal, style, and budget.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>We Design</h4>
+        <p>Our craftsmen sketch your piece and share a design preview for your approval.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Handcrafted</h4>
+        <p>Once approved, we source the perfect gem and begin handcrafting your unique piece.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Delivered</h4>
+        <p>Insured worldwide shipping in luxury packaging. Your piece arrives safe and beautiful.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GEMS -->
+  <section class="gems-section">
+  <div class="section-label" style="color:var(--gold)">What We Work With</div>
+  <h2 class="section-title">Our <em style="color:var(--gold)">Gem Range</em></h2>
+
+  <div class="gems-grid">
+
+    <div class="gem-card">
+      <img src="images/BlueS.png" alt="Blue Sapphire">
+      <h4>Blue Sapphire</h4>
+      <p>Ceylon · Natural & Heated</p>
+    </div>
+
+    <div class="gem-card">
+      <img src="images/Ruby.png" alt="Ruby">
+      <h4>Ruby</h4>
+      <p>Ceylon · Natural</p>
+    </div>
+
+    <div class="gem-card">
+      <img src="images/Emerald.png" alt="Emerald">
+      <h4>Emerald</h4>
+      <p>Ceylon · Natural</p>
+    </div>
+
+    <div class="gem-card">
+      <img src="images/PinkS.png" alt="Pink Sapphire">
+      <h4>Pink Sapphire</h4>
+      <p>Ceylon · Natural</p>
+    </div>
+
+    <div class="gem-card">
+      <img src="images/YellowS.png" alt="Yellow Sapphire">
+      <h4>Yellow Sapphire</h4>
+      <p>Ceylon · Heated</p>
+    </div>
+
+    <div class="gem-card">
+      <img src="images/Diamond.png" alt="Diamond">
+      <h4>Diamond</h4>
+      <p>VVS · GIA Certified</p>
+    </div>
+
+    <div class="gem-card">
+      <img src="images/Amethyst.png" alt="Amethyst">
+      <h4>Amethyst</h4>
+      <p>Natural · Ceylon</p>
+    </div>
+
+  </div>
+</section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="index.html">GleamingAura Gems & Jewellery</a>
+        <p>Handcrafted luxury jewelry from Sri Lanka. Natural &amp; heated gems. Worldwide delivery.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Order</h4>
+        <a href="contact.html">Custom Jewelry</a>
+        <a href="contact.html">DM to Order</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 GleamingAura Gems and Jewellery · Sri Lanka 🇱🇰</span>
+      <span>Handcrafted with </span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/main.js"></script>
+</html>

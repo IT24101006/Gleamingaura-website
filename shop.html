@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shop — LuxeGems</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    /* SHOP-ONLY STYLES */
+
+    .filter-bar {
+      padding: 1.5rem 5%;
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      background: var(--black);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+
+    .filter-btn {
+      padding: 0.5rem 1.4rem;
+      border: 1px solid rgba(201,168,76,0.3);
+      background: transparent;
+      color: rgba(255,255,255,0.6);
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .shop-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+      padding: 3rem 5%;
+    }
+
+    .shop-card {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.07);
+      overflow: hidden;
+      transition: box-shadow 0.3s, transform 0.3s;
+      cursor: pointer;
+    }
+
+    .shop-card:hover {
+      box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+      transform: translateY(-4px);
+    }
+
+    .shop-card .card-img {
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, #1e1a14, #2a2318);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .shop-card .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+    }
+
+    .badge {
+      position: absolute;
+      top: 1rem; left: 1rem;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+    }
+
+    .shop-card .card-body {
+      padding: 1.3rem 1.5rem 1.5rem;
+    }
+
+    .card-gem {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+    }
+
+    .card-name {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+      line-height: 1.7;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-price {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--gold);
+    }
+
+    .card-cta {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 1px;
+      transition: opacity 0.2s;
+    }
+
+    .card-cta:hover { opacity: 0.7; }
+
+    .shop-cta-strip {
+      background: var(--deep);
+      padding: 4rem 5%;
+      text-align: center;
+      border-top: 1px solid rgba(201,168,76,0.2);
+    }
+
+    .shop-cta-strip h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      color: var(--white);
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    .shop-cta-strip h2 em { color: var(--gold); font-style: italic; }
+
+    .shop-cta-strip p {
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 2rem;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (max-width: 480px) {
+      .shop-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">GleamingAura Gems and Jewellery</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html" class="active">Shop</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <header class="page-hero">
+    <div>
+      <div class="section-label">Our Collection</div>
+      <h1>The <em>Gem Vault</em></h1>
+    </div>
+  </header>
+
+  <!-- FILTERS -->
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterProducts('all', this)">All Pieces</button>
+    <button class="filter-btn" onclick="filterProducts('rings', this)">Rings</button>
+    <button class="filter-btn" onclick="filterProducts('pendents', this)">Pendents</button>
+    <button class="filter-btn" onclick="filterProducts('bracelets', this)">Bracelets</button>
+   
+    <button class="filter-btn" onclick="filterProducts('earrings', this)">Earrings</button>
+  </div>
+
+  <!-- PRODUCT GRID -->
+  <div class="shop-grid" id="shopGrid">
+
+    <div class="shop-card" data-cat="rings">
+      <div class="card-img">
+  <img src="images/Ring.png" alt="Ring">
+</div>
+      <div class="card-body">
+        <div class="card-gem">Ceylon Blue Sapphire</div>
+        <h3 class="card-name">Blue Sapphire Ring</h3>
+        <p class="card-desc">Natural Ceylon sapphire, heat treated for vivid colour. Set in 18K gold with pavé diamond shoulders.</p>
+        
+      </div>
+    </div>
+
+    <div class="shop-card" data-cat="rings">
+      <div class="card-img">
+  <img src="images/mens_rinng.png" alt="Rings">
+</div>
+      <div class="card-body">
+        <div class="card-gem">Ceylon Blue Sapphire</div>
+        <h3 class="card-name">Blue Sapphire Bracelet</h3>
+        <p class="card-desc">Natural Ceylon sapphire, heat treated for vivid colour.</p>
+        
+      </div>
+    </div>
+
+    <div class="shop-card" data-cat="pendents">
+      <div class="card-img">
+  <img src="images/Pendent.png" alt="Pendants">
+</div>
+      <div class="card-body">
+        <div class="card-gem">Ceylon Blue Sapphire</div>
+        <h3 class="card-name">Blue Sapphire Pendant</h3>
+        <p class="card-desc">Natural Ceylon sapphire, heat treated for vivid colour..</p>
+        
+      </div>
+    </div>
+
+    <div class="shop-card" data-cat="rings">
+     <div class="card-img">
+  <img src="images/Diamond ring.png" alt="Rings">
+</div>
+      <div class="card-body">
+        <div class="card-gem">Diamond</div>
+        <h3 class="card-name">white gold diamond ring</h3>
+        <p class="card-desc"> diamond.</p>
+        
+      </div>
+    </div>
+
+    <div class="shop-card" data-cat="earrings">
+      <div class="card-img">
+  <img src="images/Earings.png" alt="Earings">
+</div>
+      <div class="card-body">
+        <div class="card-gem">Ceylon Blue Sapphire</div>
+        <h3 class="card-name">Blue Sapphire Earrings</h3>
+        <p class="card-desc">Natural Ceylon sapphire, heat treated for vivid colour.</p>
+        
+      </div>
+    </div>
+    
+     <div class="shop-card" data-cat="bracelets">
+      <div class="card-img">
+  <img src="images/Bracelet.png" alt="Bracelets">
+</div>
+      <div class="card-body">
+        <div class="card-gem">Ceylon Blue Sapphire</div>
+        <h3 class="card-name">Blue Sapphire Bracelet</h3>
+        <p class="card-desc">Natural Ceylon sapphire, heat treated for vivid colour.</p>
+        
+      </div>
+    </div>
+
+    <div class="shop-card" data-cat="rings">
+      <div class="card-img">
+  <img src="images/men ring2.png" alt="Rings">
+</div>
+      <div class="card-body">
+        <div class="card-gem">Ceylon Blue Sapphire</div>
+        <h3 class="card-name">Blue Sapphire Bracelet</h3>
+        <p class="card-desc">Natural Ceylon sapphire, heat treated for vivid colour.</p>
+        
+      </div>
+    </div>
+
+    <div class="shop-card" data-cat="Rings">
+      <div class="card-img">
+  <img src="images/eme.png" alt="rings">
+</div>
+      <div class="card-body">
+        <div class="card-gem">Emerald</div>
+        <h3 class="card-name">Emerald Ring</h3>
+        <p class="card-desc">Natural Emerald, heat treated for vivid colour.</p>
+        
+      </div>
+    </div>
+
+    <div class="shop-card" data-cat="pendents">
+      <div class="card-img">
+  <img src="images/peb.png" alt="Emerald Ring">
+</div>
+      <div class="card-body">
+        <div class="card-gem">Blue Sapphire</div>
+        <h3 class="card-name">Blue Sapphire Pendent</h3>
+        <p class="card-desc">Natural Emerald, heat treated for vivid colour.</p>
+       
+      </div>
+    </div>
+
+     <div class="shop-card" data-cat="rings">
+      <div class="card-img">
+  <img src="images/pink_s.png" alt="Rings">
+</div>
+      <div class="card-body">
+        <div class="card-gem">Rose Gold and Pink Sapphire</div>
+        <h3 class="card-name">Pink Sapphire and Rose Gold Ring</h3>
+        <p class="card-desc">🌸 Mesmerizing Pink Sapphire
+✨ Rose Gold Radiance</p>
+        
+      </div>
+    </div>
+
+    <div class="shop-card" data-cat="bracelets">
+      <div class="card-img">
+  <img src="images/bracelet2.png" alt="Bracelets">
+</div>
+      <div class="card-body">
+        <div class="card-gem">White Gold & Diamond </div>
+        <h3 class="card-name">White Gold Diamond Bangle</h3>
+        <p class="card-desc">An elegant white gold ladies’ bangle adorned with sparkling diamonds, embodying timeless beauty and refined luxury.</p>
+        
+      </div>
+    </div>
+ 
+
+  <footer>
+    <div>
+    <a href="contact.html" class="btn">Request Custom Piece</a>
+  </div>
+   
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    function filterProducts(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.shop-card').forEach(card => {
+        card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+      });
+    }
+  </script>
+
+</body>
+</html>

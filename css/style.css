@@ -1,0 +1,441 @@
+/* ===== LUXE GEMS — Global Styles ===== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap');
+
+:root {
+  --primary: #070B14;      /* deep black-blue */
+  --secondary: #0E1630;    /* dark navy */
+  --accent: #3B82F6;       /* blue highlight */
+  --accent-soft: #93C5FD;  /* light blue */
+  --white: #FFFFFF;
+  --muted: #AAB4C5;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--primary);
+  color: var(--white);
+}
+
+img { max-width: 100%; display: block; }
+a  { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* ===== NAVBAR ===== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 5%;
+  background: rgba(7, 11, 20, 0.95);
+border-bottom: 1px solid rgba(59, 130, 246, 0.25);
+  backdrop-filter: blur(10px);
+  
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.nav-links a {
+  color: var(--white);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  transition: opacity 0.2s, color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  opacity: 1;
+  color: var(--gold);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--gold);
+  transition: transform 0.3s;
+}
+
+/* ===== PAGE HERO ===== */
+.page-hero {
+  min-height: 38vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 6rem 5% 3rem;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-bottom: 1px solid rgba(201,168,76,0.25);
+}
+
+.page-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.1;
+}
+
+.page-hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+/* ===== SECTION WRAPPER ===== */
+.section {
+  padding: 5rem 5%;
+}
+
+.section-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--white);
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-block;
+  padding: 0.85rem 2.2rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent);
+color: var(--accent);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+}
+
+.btn:hover {
+  background: var(--gold);
+  color: var(--black);
+}
+
+.btn-dark {
+  background: var(--gold);
+  color: var(--black);
+}
+
+.btn-dark:hover {
+  background: transparent;
+  color: var(--gold);
+}
+
+/* ===== GOLD DIVIDER ===== */
+.divider {
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+  margin: 1.5rem 0;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--deep);
+  color: rgba(255,255,255,0.6);
+  padding: 3.5rem 5% 2rem;
+  border-top: 1px solid rgba(201,168,76,0.2);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-brand .nav-logo {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.footer-brand p {
+  font-size: 0.85rem;
+  line-height: 1.8;
+  max-width: 260px;
+}
+
+.footer-col h4 {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+ color: var(--accent);
+  margin-bottom: 1.2rem;
+}
+
+.footer-col a {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 0.6rem;
+  opacity: 0.7;
+  transition: opacity 0.2s, color 0.2s;
+}
+
+.footer-col a:hover { opacity: 1; color: var(--gold); }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 1.5rem;
+  font-size: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.footer-bottom span { color: var(--accent); }
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    background: var(--black);
+    padding: 2rem 5%;
+    border-top: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .nav-links.open { display: flex; }
+  .nav-toggle { display: flex; }
+
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+.page-hero p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  letter-spacing: 0.05em;
+}
+.gem-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto 10px;
+}
+.gem-card h4 {
+  color: #ffffff;
+}
+
+.gem-card p {
+  color: rgba(255, 255, 255, 0.75);
+}
+.shop-cta-strip,
+footer {
+  width: 100%;
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+.shop-cta-strip > *,
+footer > * {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--deep);
+  padding: 1.5rem 5%;
+  z-index: 999;
+  gap: 2rem;
+}
+
+/* left side */
+.cta-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.cta-box h2 {
+  font-size: 1rem;
+  color: white;
+  margin: 0;
+}
+
+.cta-box p {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.6);
+  margin: 0;
+}
+
+/* right side */
+.footer-box {
+  text-align: right;
+  color: rgba(255,255,255,0.6);
+  font-size: 0.8rem;
+}
+
+/* prevent overlap with page content */
+body {
+  padding-bottom: 120px;
+}
+.insta-qr {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+.insta-qr img {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  background: white;
+  padding: 5px;
+  box-shadow: 0 0 15px rgba(59,130,246,0.4);
+  transition: transform 0.3s;
+}
+
+.insta-qr img:hover {
+  transform: scale(1.1);
+}
+
+.about-visual {
+  width: 320px;          /* 👈 change size here */
+  height: 420px;        /* 👈 change size here */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  margin: auto;         /* center it */
+}
+
+.about-visual video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* ===== FLOATING CONTACT BAR ===== */
+.contact-bar {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  background: rgba(0,0,0,0.75);
+  padding: 12px;
+  border-radius: 14px;
+  backdrop-filter: blur(10px);
+}
+
+/* WhatsApp button */
+.cbar-whatsapp {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  background: #25D366;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+/* Divider */
+.cbar-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.2);
+  margin: 5px 0;
+}
+
+/* Social icons row */
+.cbar-socials {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.cbar-icon,
+.cbar-email {
+  color: white;
+  opacity: 0.8;
+  transition: 0.2s;
+}
+
+.cbar-icon:hover,
+.cbar-email:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* ===== SHOP CARD TEXT BLACK OVERRIDE ===== */
+.card-body .card-gem,
+.card-body .card-name,
+.card-body .card-desc,
+.card-body .card-price {
+  color: #000000 !important;
+  font-weight: 600;
+}
+
+.card-body .card-name {
+  font-weight: 700;
+}
+
+.card-body .card-desc {
+  font-weight: 400;
+}
+
+.card-body .card-price {
+  font-weight: 700;
+}
